@@ -2,6 +2,9 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include "meal.h"
+#include "user.h"
+#include <QStandardItemModel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -17,5 +20,18 @@ public:
 
 private:
     Ui::Widget *ui;
+    Meal meal;
+    User user;
+
+
+    QStandardItemModel* model = new QStandardItemModel();
+
+signals:
+    void calorieChanged();
+
+
+private slots:
+    void updateUI();
+
 };
 #endif // WIDGET_H
