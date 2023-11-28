@@ -31,7 +31,9 @@ signals:
 
 
 private slots:
-    void updateUI();
+    void updateTable();
+    void updateLabelProgress();
+    void deleteItem();
 
 };
 #endif // WIDGET_H
