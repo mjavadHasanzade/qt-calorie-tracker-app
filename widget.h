@@ -2,7 +2,6 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include "meal.h"
 #include "user.h"
 #include <QStandardItemModel>
 
@@ -20,7 +19,6 @@ public:
 
 private:
     Ui::Widget *ui;
-    Meal meal;
     User user;
 
 
