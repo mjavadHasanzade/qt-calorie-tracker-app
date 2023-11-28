@@ -28,7 +28,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="mealNameInput"/>
          </item>
         </layout>
        </item>
@@ -42,16 +42,31 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_2"/>
+          <widget class="QDoubleSpinBox" name="mealCalorieSpin"/>
          </item>
         </layout>
        </item>
       </layout>
      </item>
      <item>
+      <widget class="QLabel" name="totalCalorieLabel">
+       <property name="font">
+        <font>
+         <pointsize>25</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QProgressBar" name="progressBar">
        <property name="value">
-        <number>24</number>
+        <number>0</number>
        </property>
       </widget>
      </item>
@@ -76,16 +91,16 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="deleteMeal">
        <property name="text">
-        <string>PushButton</string>
+        <string>delete</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="addMeal">
        <property name="text">
-        <string>PushButton</string>
+        <string>add</string>
        </property>
       </widget>
      </item>
