@@ -2,12 +2,16 @@
 #include "./ui_widget.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <QInputDialog>
+#include <QApplication>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+
+    // ================Setup Table=============================== //
 
     // Set column and row count
     model->setColumnCount(2);
@@ -18,6 +22,24 @@ Widget::Widget(QWidget *parent)
 
     // Set the model for the table view
     ui->tableView->setModel(model);
+
+
+
+    // ================Setup Input Dialog=============================== //
+
+    bool ok;
+    double dailyGoal = QInputDialog::getDouble(this, "Daily Goal", "Enter Your Daily Goal", 100, 0, 1000, 2, &ok);
+
+    if (ok) {
+        user.setDailyGoal(dailyGoal);
+    } else {
+        qDebug() << "User canceled or closed the input dialog.";
+        user.setDailyGoal(100);
+    }
+
+    ui->dailyGoalLabel->setText(QString::number(user.dailyGoal()));
+
+
 
     connect(ui->addMeal, &QPushButton::clicked,this,&Widget::updateTable);
     connect(this,&Widget::calorieChanged,this,&Widget::updateLabelProgress);

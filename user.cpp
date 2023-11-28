@@ -18,3 +18,8 @@ void User::setTotalCalories(double totalCalories){
 double User::getTotalCalories(){
     return m_totalCalories;
 }
+
+void User::setDailyGoal(double dailyGoal)
+{
+    m_dailyGoal=dailyGoal;
+}

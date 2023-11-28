@@ -11,6 +11,8 @@ public:
     double dailyGoal();
     void setTotalCalories(double totalCalories);
     double getTotalCalories();
+    void setDailyGoal(double dailyGoal);
+
 
 signals:
 
