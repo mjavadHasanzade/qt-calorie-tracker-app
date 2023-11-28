@@ -32,12 +32,27 @@ Widget::~Widget()
 
 void Widget::updateTable()
 {
-    int newRow = model->rowCount();
-    model->setItem(newRow, 0, new QStandardItem(ui->mealNameInput->text()));
-    model->setItem(newRow, 1, new QStandardItem(QString::number(ui->mealCalorieSpin->value())));
-    user.setTotalCalories(user.getTotalCalories()+ui->mealCalorieSpin->value());
+    if(ui->mealNameInput->text().length()==0){
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setText("Name can't be Empty");
+        msgBox.exec();
+    }
+    else if(ui->mealCalorieSpin->value()<=0){
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setText("Calorie can't be 0 or less");
+        msgBox.exec();
+    }
+    else{
 
-    emit calorieChanged();
+        int newRow = model->rowCount();
+        model->setItem(newRow, 0, new QStandardItem(ui->mealNameInput->text()));
+        model->setItem(newRow, 1, new QStandardItem(QString::number(ui->mealCalorieSpin->value())));
+        user.setTotalCalories(user.getTotalCalories()+ui->mealCalorieSpin->value());
+
+        emit calorieChanged();
+    }
 }
 
 void Widget::updateLabelProgress()
@@ -49,11 +64,13 @@ void Widget::updateLabelProgress()
         ui->progressBar->setValue(100);
         QMessageBox msgBox;
         msgBox.setIcon(QMessageBox::Warning);
-        msgBox.setText("You've the Daily Goal.");
+        msgBox.setText("You've Reached the Daily Goal.");
         msgBox.exec();
     }
 
     ui->progressBar->setValue(static_cast<int>(user.getTotalCalories() / user.dailyGoal() * 100));
+    ui->mealNameInput->setText("");
+    ui->mealCalorieSpin->setValue(0);
 
 }
 
